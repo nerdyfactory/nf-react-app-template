@@ -15,6 +15,21 @@ This template includes
 - [testing library](https://testing-library.com/)
 
 
+## Install
+  1. Make sure you have [**node**](https://nodejs.org/), [**yarn**](https://yarnpkg.com/) installed.
+  2. install dependencies
+  ```
+  $ yarn install
+  ```
+  3. running test to check everything is fine
+  ```
+  $ yarn test
+  ```
+  4. runnging development server
+  ```
+  $ yarn start
+  ```
+
 ## Available Scripts
 
 In the project directory, you can run:
