@@ -3,12 +3,11 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import App from './App';
 
 describe('App', () => {
-  it('renders app', () => {
-    const { container } = render(<App />);
-    expect(container).toMatchSnapshot();
-  });
-
   describe('Login', () => {
+    it('renders login', () => {
+      const { container } = render(<App />);
+      expect(container).toMatchSnapshot();
+    });
     it('moves to logout when login', async () => {
       render(<App />);
       fireEvent.click(screen.getByText('Login'));
@@ -19,9 +18,15 @@ describe('App', () => {
 
   describe('Logout', () => {
     const loginAfterRender = () => {
-      render(<App />);
+      const res = render(<App />);
       fireEvent.click(screen.getByText('Login'));
+      return res;
     };
+
+    it('renders logout', async () => {
+      const { container } = loginAfterRender();
+      expect(container).toMatchSnapshot();
+    });
 
     it('moves to login screen', async () => {
       loginAfterRender();
