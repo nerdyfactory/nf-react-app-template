@@ -1,6 +1,19 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
+import { Logout } from '../pages';
 
 export function PrivateNav() {
-  return <Router></Router>;
+  return (
+    <Router>
+      <Switch>
+        <Route path="/logout" component={Logout} />
+        <Redirect to={'/logout'} />
+      </Switch>
+    </Router>
+  );
 }
