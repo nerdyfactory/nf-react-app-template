@@ -5,9 +5,7 @@ export enum AuthActionTypes {
   REMOVE_TOKEN = 'AUTH/REMOVE_TOKEN',
 }
 
-type AuthActions =
-  | { type: AuthActionTypes.SET_TOKEN; payload: string }
-  | { type: AuthActionTypes.REMOVE_TOKEN };
+type AuthActions = { type: AuthActionTypes.SET_TOKEN; payload: string } | { type: AuthActionTypes.REMOVE_TOKEN };
 
 interface IAuthState {
   token?: string;
@@ -18,10 +16,7 @@ export const INITIAL_AUTH_STATE: IAuthState = {
   dispatch: () => {},
 };
 
-export const authReducer = (
-  state: IAuthState,
-  action: AuthActions
-): IAuthState => {
+export const authReducer = (state: IAuthState, action: AuthActions): IAuthState => {
   switch (action.type) {
     case AuthActionTypes.SET_TOKEN:
       return { ...state, token: action.payload };
