@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Login renders login 1`] = `
+<div>
+  <div
+    class="App"
+  >
+    <div>
+      <button>
+        Login
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`App Logout renders logout 1`] = `
+<div>
+  <div
+    class="App"
+  >
+    <div>
+      <button>
+        Logout
+      </button>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,28 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "extensions": [".ts", ".tsx", ".jsx", ".js", ".json"],
+        "alias": {
+          "assets": "./assets",
+          "components": "./components",
+          "constants": "./constants",
+          "contexts": "./contexts",
+          "navigations": "./navigations",
+          "pages": "./pages",
+          "services": "./services",
+          "theme": "./theme",
+          "types": "./types"
+        }
+      }
+    ]
+  ],
+  "presets": [
+    [
+      "@babel/preset-env", { "targets": { "node": "current" } },
+      "@babel/preset-typescript"
+    ]
+  ]
+}
