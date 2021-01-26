@@ -1,11 +1,6 @@
 import React, { useState, useReducer, useEffect } from 'react';
 import { PrivateNav, PublicNav } from './navigations';
-import {
-  AuthActionTypes,
-  AuthContext,
-  authReducer,
-  INITIAL_AUTH_STATE,
-} from './contexts';
+import { AuthActionTypes, AuthContext, authReducer, INITIAL_AUTH_STATE } from './contexts';
 import { Loading } from './components';
 import './App.css';
 
