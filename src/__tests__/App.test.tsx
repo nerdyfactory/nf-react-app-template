@@ -26,12 +26,12 @@ describe('App', () => {
       expect(screen.getByRole('button')).toHaveTextContent('Logout');
       expect(localStorage.setItem).toHaveBeenLastCalledWith(USER_TOKEN, JWT_TOKEN);
     });
-    it('stay on login without token', async () => {
+    it('Throw error if wrong password', async () => {
       try {
         render(<App />);
         await login('mark@example.com', 'wrongpassword');
       } catch (error) {
-        console.log(`ERROR::`, error);
+        expect(error.message).toBeTruthy();
       }
       expect(localStorage.setItem).toHaveBeenCalledTimes(0);
     });

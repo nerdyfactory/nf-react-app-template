@@ -6,7 +6,7 @@ export type User = {
 };
 
 type Error = {
-  error: string;
+  message: string;
 };
 
 export const JWT_TOKEN =
@@ -38,7 +38,7 @@ export function singIn(email: string, password: string) {
       user
         ? resolve(JWT_TOKEN)
         : reject({
-            error: 'User not found. Check your credentials or sing up.',
+            message: 'User not found. Check your credentials or sing up.',
           })
     );
   });
