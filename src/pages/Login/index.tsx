@@ -3,7 +3,7 @@ import { AuthContext, AuthActionTypes } from '../../contexts';
 
 export function Login() {
   const { dispatch } = useContext(AuthContext);
-  const onLogin = () => dispatch({ type: AuthActionTypes.SET_TOKEN, payload: 'somerandometoken' });
+  const onLogin = () => dispatch({ type: AuthActionTypes.SET_TOKEN, payload: 'somerandomtoken' });
 
   return (
     <div>
