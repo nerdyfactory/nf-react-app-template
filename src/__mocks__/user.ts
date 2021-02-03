@@ -1,4 +1,3 @@
-import 'jest-localstorage-mock';
 import { USER_TOKEN } from '__tests__/App.test';
 import { User, requestUser, singIn } from './request';
 

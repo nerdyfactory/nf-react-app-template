@@ -1,5 +1,4 @@
 import React from 'react';
-import 'jest-localstorage-mock';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { login, logout } from '../__mocks__/user';
 import App from '../App';
