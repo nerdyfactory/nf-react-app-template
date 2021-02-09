@@ -24,7 +24,6 @@ describe('App', () => {
       const pwInput = getByPlaceholderText(`password`);
       userInput.setAttribute(`value`, 'mark@example.com');
       pwInput.setAttribute(`value`, 'Mark1234567');
-      console.log(`INPUT`, userInput.getAttribute(`value`));
       await login(userInput.getAttribute(`value`) || ``, pwInput.getAttribute(`value`) || ``);
       fireEvent.click(screen.getByText('Login'));
       await waitFor(() => screen.getByRole('button'));
