@@ -6,10 +6,12 @@ export async function getUserName(userID: string) {
   return user.name;
 }
 
-export async function login(username: string, password: string) {
-  const token: string = await singIn(username, password);
-  if (token) {
-    localStorage.setItem(USER_TOKEN, token);
+export async function login(username?: string, password?: string) {
+  if (username && password) {
+    const token: string = await singIn(username, password);
+    if (token) {
+      localStorage.setItem(USER_TOKEN, token);
+    }
   }
 }
 

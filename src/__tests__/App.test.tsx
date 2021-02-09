@@ -17,14 +17,21 @@ describe('App', () => {
       const { container } = render(<App />);
       expect(container).toMatchSnapshot();
     });
+
     it('moves to logout when login', async () => {
-      render(<App />);
-      await login('mark@example.com', 'Mark1234567');
+      const { getByPlaceholderText } = render(<App />);
+      const userInput = getByPlaceholderText(`username`);
+      const pwInput = getByPlaceholderText(`password`);
+      userInput.setAttribute(`value`, 'mark@example.com');
+      pwInput.setAttribute(`value`, 'Mark1234567');
+      console.log(`INPUT`, userInput.getAttribute(`value`));
+      await login(userInput.getAttribute(`value`) || ``, pwInput.getAttribute(`value`) || ``);
       fireEvent.click(screen.getByText('Login'));
       await waitFor(() => screen.getByRole('button'));
       expect(screen.getByRole('button')).toHaveTextContent('Logout');
       expect(localStorage.setItem).toHaveBeenLastCalledWith(USER_TOKEN, JWT_TOKEN);
     });
+
     it('Throw error if wrong password', async () => {
       try {
         render(<App />);
