@@ -20,8 +20,8 @@ describe('App', () => {
 
     it('moves to logout when login', async () => {
       const { getByPlaceholderText } = render(<App />);
-      const userInput = getByPlaceholderText(`username`);
-      const pwInput = getByPlaceholderText(`password`);
+      const userInput = getByPlaceholderText(`User`);
+      const pwInput = getByPlaceholderText(`Password`);
       userInput.setAttribute(`value`, 'mark@example.com');
       pwInput.setAttribute(`value`, 'Mark1234567');
       fireEvent.click(screen.getByText('Login'));

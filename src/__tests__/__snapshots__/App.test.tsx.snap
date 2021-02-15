@@ -3,39 +3,81 @@
 exports[`App Login renders login 1`] = `
 <div>
   <div
-    class="App"
+    class="sc-dlfnbm iuHaXN"
   >
-    <div>
-      <input
-        name="username"
-        placeholder="username"
-        type="text"
-        value=""
-      />
-      <input
-        name="password"
-        placeholder="password"
-        type="text"
-        value=""
-      />
-      <button>
-        Login
-      </button>
+    <div
+      class="MuiFormControl-root MuiTextField-root sc-gsTCUz eHbxyQ"
+    >
+      <div
+        class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+      >
+        <input
+          aria-invalid="false"
+          class="MuiInputBase-input MuiInput-input"
+          id="standard-basic"
+          placeholder="User"
+          type="text"
+          value=""
+        />
+      </div>
     </div>
+    <div
+      class="MuiFormControl-root MuiTextField-root sc-gsTCUz eHbxyQ"
+    >
+      <div
+        class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+      >
+        <input
+          aria-invalid="false"
+          class="MuiInputBase-input MuiInput-input"
+          id="standard-basic"
+          placeholder="Password"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained sc-bdfBwQ lfqaYk MuiButton-containedPrimary"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Login
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
   </div>
+  <div
+    style="position: fixed; z-index: 9999;"
+  />
 </div>
 `;
 
 exports[`App Logout renders logout 1`] = `
 <div>
-  <div
-    class="App"
-  >
-    <div>
-      <button>
+  <div>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained sc-bdfBwQ lfqaYk MuiButton-containedPrimary"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
         Logout
-      </button>
-    </div>
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
   </div>
+  <div
+    style="position: fixed; z-index: 9999;"
+  />
 </div>
 `;

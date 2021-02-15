@@ -17,9 +17,9 @@ export function Login() {
 
   return (
     <App>
-      <DefaultInput floatingLabel placeholder="User" value={user} onChange={setUser} />
-      <DefaultInput floatingLabel placeholder="Password" value={password} onChange={setPassword} />
-      <DefaultButton muiColor={MUIColorEnums.primary} label="login" onClick={onLogin} />
+      <DefaultInput placeholder="User" value={user} onChange={setUser} />
+      <DefaultInput placeholder="Password" value={password} onChange={setPassword} />
+      <DefaultButton muiColor={MUIColorEnums.primary} label="Login" onClick={onLogin} />
     </App>
   );
 }

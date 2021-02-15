@@ -1,4 +1,6 @@
+import { DefaultButton } from 'components/DefaultButton';
 import React, { useContext } from 'react';
+import { MUIColorEnums } from 'types';
 import { AuthContext, AuthActionTypes } from '../../contexts';
 
 export function Logout() {
@@ -7,7 +9,7 @@ export function Logout() {
 
   return (
     <div>
-      <button onClick={onLogout}>Logout</button>
+      <DefaultButton muiColor={MUIColorEnums.primary} label="Logout" onClick={onLogout} />
     </div>
   );
 }
