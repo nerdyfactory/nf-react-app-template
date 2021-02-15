@@ -25,7 +25,7 @@ export function requestUser(url: string) {
       user
         ? resolve(user)
         : reject({
-            error: 'User with ' + userID + ' not found.',
+            message: 'User with ' + userID + ' not found.',
           })
     );
   });

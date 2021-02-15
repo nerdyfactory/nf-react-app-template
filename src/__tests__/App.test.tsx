@@ -24,8 +24,8 @@ describe('App', () => {
       const pwInput = getByPlaceholderText(`password`);
       userInput.setAttribute(`value`, 'mark@example.com');
       pwInput.setAttribute(`value`, 'Mark1234567');
-      await login(userInput.getAttribute(`value`) || ``, pwInput.getAttribute(`value`) || ``);
       fireEvent.click(screen.getByText('Login'));
+      await login(userInput.getAttribute(`value`) || ``, pwInput.getAttribute(`value`) || ``);
       await waitFor(() => screen.getByRole('button'));
       expect(screen.getByRole('button')).toHaveTextContent('Logout');
       expect(localStorage.setItem).toHaveBeenLastCalledWith(USER_TOKEN, JWT_TOKEN);
