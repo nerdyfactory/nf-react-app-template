@@ -1,5 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext, AuthActionTypes } from '../../contexts';
+import { DefaultButton } from 'components/DefaultButton';
+import { MUIColorEnums } from 'types';
+import { DefaultInput } from 'components/DefaultInput';
+import styled from 'styled-components';
 
 export function Login() {
   const { dispatch } = useContext(AuthContext);
@@ -12,22 +16,18 @@ export function Login() {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        name="username"
-        placeholder="username"
-        value={user}
-        onChange={({ target }) => setUser(target.value)}
-      />
-      <input
-        type="text"
-        name="password"
-        placeholder="password"
-        value={password}
-        onChange={({ target }) => setPassword(target.value)}
-      />
-      <button onClick={onLogin}>Login</button>
-    </div>
+    <App>
+      <DefaultInput floatingLabel placeholder="User" value={user} onChange={setUser} />
+      <DefaultInput floatingLabel placeholder="Password" value={password} onChange={setPassword} />
+      <DefaultButton muiColor={MUIColorEnums.primary} label="login" onClick={onLogin} />
+    </App>
   );
 }
+
+const App = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width: 600px;
+  margin: 100px auto;
+`;
