@@ -1,4 +1,4 @@
-import { USER_TOKEN } from '__tests__/App.test';
+import { USER_TOKEN } from 'constants/utility';
 import { User, requestUser, singIn } from './request';
 
 export async function getUserName(userID: string) {

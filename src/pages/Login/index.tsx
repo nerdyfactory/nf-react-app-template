@@ -1,14 +1,18 @@
 import React, { useContext, useState } from 'react';
+import useAuth from 'hooks/useAuth';
 import { AuthContext, AuthActionTypes } from '../../contexts';
 
 export function Login() {
-  const { dispatch } = useContext(AuthContext);
+  const { login } = useAuth();
   const [user, setUser] = useState<string>(``);
   const [password, setPassword] = useState<string>(``);
 
-  const onLogin = () => {
-    // login(user, password);
-    dispatch({ type: AuthActionTypes.SET_TOKEN, payload: 'somerandomtoken' });
+  const onLogin = async () => {
+    try {
+      await login(user, password);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

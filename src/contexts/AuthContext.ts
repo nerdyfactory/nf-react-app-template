@@ -1,4 +1,6 @@
+import { USER_TOKEN } from 'constants/utility';
 import React, { Dispatch } from 'react';
+import { clearState, persistState } from 'services/utils/persist-state';
 
 export enum AuthActionTypes {
   SET_TOKEN = 'AUTH/SET_TOKEN',
@@ -19,8 +21,10 @@ export const INITIAL_AUTH_STATE: IAuthState = {
 export const authReducer = (state: IAuthState, action: AuthActions): IAuthState => {
   switch (action.type) {
     case AuthActionTypes.SET_TOKEN:
+      persistState(USER_TOKEN, action.payload);
       return { ...state, token: action.payload };
     case AuthActionTypes.REMOVE_TOKEN:
+      clearState(USER_TOKEN);
       return { ...state, token: undefined };
     default:
       return state;
