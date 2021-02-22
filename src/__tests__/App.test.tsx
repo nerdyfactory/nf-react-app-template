@@ -17,7 +17,7 @@ describe('App', () => {
       userInput.setAttribute(`value`, 'mark@example.com');
       pwInput.setAttribute(`value`, 'Mark1234567');
       fireEvent.click(screen.getByText('Login'));
-      await waitFor(() => screen.getByRole('button'));
+      await waitFor(() => screen.getByText('Logout'));
       expect(screen.getByRole('button')).toHaveTextContent('Logout');
       expect(localStorage.setItem).toHaveBeenCalledTimes(1);
     });
@@ -26,8 +26,8 @@ describe('App', () => {
   describe('Logout', () => {
     const loginAfterRender = async () => {
       const res = render(<App />);
-      const userInput = res.getByPlaceholderText(`username`);
-      const pwInput = res.getByPlaceholderText(`password`);
+      const userInput = res.getByPlaceholderText(`User`);
+      const pwInput = res.getByPlaceholderText(`Password`);
       userInput.setAttribute(`value`, 'mark@example.com');
       pwInput.setAttribute(`value`, 'Mark1234567');
       fireEvent.click(screen.getByText('Login'));
@@ -42,8 +42,8 @@ describe('App', () => {
     it('moves to login screen', async () => {
       await loginAfterRender();
       fireEvent.click(screen.getByText('Logout'));
-      await waitFor(() => screen.getByRole('button'));
-      expect(screen.getByRole('button')).toHaveTextContent('Login');
+      await waitFor(() => screen.getByText('Login'));
+      expect(screen.getByText('Login')).toHaveTextContent('Login');
       expect(localStorage.setItem).toHaveBeenCalledTimes(1);
       expect(localStorage.removeItem).toHaveBeenCalledTimes(1);
     });
