@@ -5,6 +5,11 @@ import { JWT_FAKE_TOKEN } from '__mocks__/request';
 const useAuth = () => {
   const { dispatch } = useContext(AuthContext);
 
+  const signUp = async (username: string, password: string, passwordConfirmation: string) => {
+    // DEVELOPER'S IMPLEMENTATION
+    console.log(username, password, passwordConfirmation);
+  };
+
   const login = async (username: string, password: string) => {
     // DEVELOPER'S IMPLEMENTATION
     console.log(username, password);
@@ -16,7 +21,7 @@ const useAuth = () => {
     dispatch({ type: AuthActionTypes.REMOVE_TOKEN });
   };
 
-  return { login, logout };
+  return { login, logout, signUp };
 };
 
 export default useAuth;

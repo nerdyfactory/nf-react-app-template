@@ -1,18 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from '@material-ui/core';
-import { MUIColorEnums } from 'types';
 import styled from 'styled-components';
+import { MUIButtonVariantEnums, MUIColorEnums } from 'constants/enums';
 
 type ButtonProps = {
   muiColor: MUIColorEnums;
+  variant?: MUIButtonVariantEnums;
   label: string;
   onClick(): void;
 };
 
-export const DefaultButton: React.FC<ButtonProps> = ({ muiColor, label, onClick }) => {
+export const DefaultButton: React.FC<ButtonProps> = ({
+  muiColor,
+  label,
+  onClick,
+  variant = MUIButtonVariantEnums.contained,
+}) => {
   return (
-    <CustomButton variant="contained" onClick={onClick} color={muiColor || 'primary'}>
+    <CustomButton variant={variant} onClick={onClick} color={muiColor || 'primary'}>
       {label}
     </CustomButton>
   );
@@ -25,6 +31,11 @@ DefaultButton.propTypes = {
     MUIColorEnums.primary,
     MUIColorEnums.inherit,
   ]).isRequired,
+  variant: PropTypes.oneOf<MUIButtonVariantEnums>([
+    MUIButtonVariantEnums.contained,
+    MUIButtonVariantEnums.outlined,
+    MUIButtonVariantEnums.text,
+  ]),
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 };

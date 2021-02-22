@@ -23,10 +23,3 @@ export type Color = {
   warning?: string;
   danger?: string;
 };
-
-export enum MUIColorEnums {
-  primary = 'primary',
-  inherit = 'inherit',
-  secondary = 'secondary',
-  default = 'default',
-}

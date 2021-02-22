@@ -1,14 +1,14 @@
 import { DefaultButton } from 'components/DefaultButton';
-import React from 'react';
-import { MUIColorEnums } from 'types';
+import React, { Fragment } from 'react';
 import useAuth from 'hooks/useAuth';
+import { MUIColorEnums } from 'constants/enums';
 
 export function Logout() {
   const { logout } = useAuth();
 
   return (
-    <div>
+    <Fragment>
       <DefaultButton muiColor={MUIColorEnums.primary} label="Logout" onClick={logout} />
-    </div>
+    </Fragment>
   );
 }

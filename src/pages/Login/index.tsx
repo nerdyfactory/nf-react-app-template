@@ -1,37 +1,44 @@
-import React, { useContext, useState } from 'react';
+import React, { Fragment, useCallback, useState } from 'react';
 import useAuth from 'hooks/useAuth';
-import { AuthContext, AuthActionTypes } from '../../contexts';
+import { useHistory } from 'react-router-dom';
+
 import { DefaultButton } from 'components/DefaultButton';
-import { MUIColorEnums } from 'types';
 import { DefaultInput } from 'components/DefaultInput';
-import styled from 'styled-components';
+import { MUIButtonVariantEnums, MUIColorEnums } from 'constants/enums';
 
 export function Login() {
   const { login } = useAuth();
+  const history = useHistory();
   const [user, setUser] = useState<string>(``);
   const [password, setPassword] = useState<string>(``);
 
-  const onLogin = async () => {
+  const onLogin = useCallback(async () => {
     try {
       await login(user, password);
+    } catch (error) {
+      console.error(error);
+    }
+  }, [login, user, password]);
+
+  const handleSingUp = async () => {
+    try {
+      history.push('/sign-up');
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <App>
-      <DefaultInput placeholder="User" value={user} onChange={setUser} />
-      <DefaultInput placeholder="Password" value={password} onChange={setPassword} />
+    <Fragment>
+      <DefaultInput placeholder="User" type="text" value={user} onChange={setUser} />
+      <DefaultInput placeholder="Password" type="password" value={password} onChange={setPassword} />
       <DefaultButton muiColor={MUIColorEnums.primary} label="Login" onClick={onLogin} />
-    </App>
+      <DefaultButton
+        variant={MUIButtonVariantEnums.text}
+        muiColor={MUIColorEnums.primary}
+        label="Create account"
+        onClick={handleSingUp}
+      />
+    </Fragment>
   );
 }
-
-const App = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  max-width: 600px;
-  margin: 100px auto;
-`;
