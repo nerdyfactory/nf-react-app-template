@@ -12,7 +12,6 @@ const useAuth = () => {
   };
 
   const logout = async () => {
-    // DEVELOPER'S IMPLEMENTATION
     dispatch({ type: AuthActionTypes.REMOVE_TOKEN });
   };
 
