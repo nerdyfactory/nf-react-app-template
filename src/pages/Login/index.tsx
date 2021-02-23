@@ -60,14 +60,14 @@ export function Login() {
     <Fragment>
       <Controller
         name="user"
-        data-testid="userInput"
         rules={{ required: true }}
         control={control}
         defaultValue=""
         render={({ onChange, value }) => (
           <DefaultInput
-            placeholder="User"
+            name="user"
             type="email"
+            placeholder="User"
             hasError={!!errors.user}
             errorText={errors.user?.message}
             onChange={onChange}
@@ -77,14 +77,14 @@ export function Login() {
       />
       <Controller
         name="password"
-        data-testid="passwordInput"
         rules={{ required: true }}
         control={control}
         defaultValue=""
         render={({ onChange, value }) => (
           <DefaultInput
-            placeholder="Password"
+            name="password"
             type="password"
+            placeholder="Password"
             hasError={!!errors.password}
             errorText={errors.password?.message}
             onChange={onChange}

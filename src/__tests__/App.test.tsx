@@ -11,21 +11,21 @@ describe('App', () => {
     });
 
     it('moves to logout when login', async () => {
-      const { getByTestId } = render(<App />);
+      const { getByPlaceholderText } = render(<App />);
 
-      fireEvent.input(getByTestId('userInput'), {
+      fireEvent.input(getByPlaceholderText('User'), {
         target: {
           value: 'test',
         },
       });
-      fireEvent.input(getByTestId('passwordInput'), {
+      fireEvent.input(getByPlaceholderText('Password'), {
         target: {
           value: 'test1234',
         },
       });
       fireEvent.click(screen.getByText('Login'));
       await waitFor(() => screen.getByText('Login'));
-      // expect(screen.getByRole('button')).toHaveTextContent('Logout');
+      expect(screen.getByRole('button')).toHaveTextContent('Logout');
       expect(localStorage.setItem).toHaveBeenCalledTimes(1);
     });
   });
@@ -33,10 +33,18 @@ describe('App', () => {
   describe('Logout', () => {
     const loginAfterRender = async () => {
       const res = render(<App />);
-      const userInput = res.getByPlaceholderText(`User`);
-      const pwInput = res.getByPlaceholderText(`Password`);
-      userInput.setAttribute(`value`, 'test');
-      pwInput.setAttribute(`value`, 'test1234');
+      const { getByPlaceholderText } = res;
+
+      fireEvent.input(getByPlaceholderText('User'), {
+        target: {
+          value: 'test',
+        },
+      });
+      fireEvent.input(getByPlaceholderText('Password'), {
+        target: {
+          value: 'test1234',
+        },
+      });
       fireEvent.click(screen.getByText('Login'));
       await waitFor(() => screen.getByText('Login'));
       return res;
@@ -48,10 +56,9 @@ describe('App', () => {
     });
 
     it('moves to login screen', async () => {
-      await loginAfterRender();
-      fireEvent.click(screen.getByText('Logout'));
-      await waitFor(() => screen.getByRole('button'));
-      expect(screen.getByRole('button')).toHaveTextContent('Login');
+      const { getAllByRole, getByText } = await loginAfterRender();
+      fireEvent.click(getByText('Logout'));
+      expect(getAllByRole('button')[0]).toHaveTextContent('Login');
       expect(localStorage.setItem).toHaveBeenCalledTimes(1);
       expect(localStorage.removeItem).toHaveBeenCalledTimes(1);
     });

@@ -9,6 +9,7 @@ type Props = {
   errorText?: string;
   placeholder: string;
   type: string;
+  name?: string;
   value: string;
   onChange(value: string): void;
 };
@@ -21,6 +22,7 @@ export const DefaultInput: React.FC<Props> = ({
   hasError,
   floatingLabel,
   type,
+  name,
 }) => {
   return (
     <TextInputFiled
@@ -29,6 +31,7 @@ export const DefaultInput: React.FC<Props> = ({
       helperText={errorText}
       value={value}
       type={type}
+      name={name}
       onChange={({ target }) => onChange(target.value)}
       id="standard-basic"
       label={floatingLabel && placeholder}
@@ -41,6 +44,7 @@ DefaultInput.propTypes = {
   hasError: PropTypes.bool,
   errorText: PropTypes.string,
   type: PropTypes.string.isRequired,
+  name: PropTypes.string,
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
