@@ -74,20 +74,84 @@ exports[`App Login renders login 1`] = `
 
 exports[`App Logout renders logout 1`] = `
 <div>
-  <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained sc-bdfBwQ lfqaYk MuiButton-containedPrimary"
-    tabindex="0"
-    type="button"
+  <div
+    class="sc-dlfnbm iuHaXN"
   >
-    <span
-      class="MuiButton-label"
+    <div
+      class="MuiFormControl-root MuiTextField-root sc-gsTCUz eHbxyQ"
     >
-      Logout
-    </span>
-    <span
-      class="MuiTouchRipple-root"
-    />
-  </button>
+      <div
+        class="MuiInputBase-root MuiInput-root MuiInput-underline Mui-error Mui-error MuiInputBase-formControl MuiInput-formControl"
+      >
+        <input
+          aria-describedby="standard-basic-helper-text"
+          aria-invalid="true"
+          class="MuiInputBase-input MuiInput-input"
+          id="standard-basic"
+          placeholder="User"
+          type="text"
+          value=""
+        />
+      </div>
+      <p
+        class="MuiFormHelperText-root Mui-error"
+        id="standard-basic-helper-text"
+      >
+        필수 필드
+      </p>
+    </div>
+    <div
+      class="MuiFormControl-root MuiTextField-root sc-gsTCUz eHbxyQ"
+    >
+      <div
+        class="MuiInputBase-root MuiInput-root MuiInput-underline Mui-error Mui-error MuiInputBase-formControl MuiInput-formControl"
+      >
+        <input
+          aria-describedby="standard-basic-helper-text"
+          aria-invalid="true"
+          class="MuiInputBase-input MuiInput-input"
+          id="standard-basic"
+          placeholder="Password"
+          type="password"
+          value=""
+        />
+      </div>
+      <p
+        class="MuiFormHelperText-root Mui-error"
+        id="standard-basic-helper-text"
+      >
+        필수 필드
+      </p>
+    </div>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained sc-bdfBwQ lfqaYk MuiButton-containedPrimary"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Login
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-text sc-bdfBwQ lfqaYk MuiButton-textPrimary"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Create account
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </div>
   <div
     style="position: fixed; z-index: 9999;"
   />

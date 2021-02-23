@@ -1,24 +1,52 @@
-import React, { Fragment, useCallback, useState } from 'react';
+import React, { Fragment, useCallback } from 'react';
 import useAuth from 'hooks/useAuth';
 import { useHistory } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 
 import { DefaultButton } from 'components/DefaultButton';
 import { DefaultInput } from 'components/DefaultInput';
 import { MUIButtonVariantEnums, MUIColorEnums } from 'constants/enums';
+import { ERROR_MESSAGES, PASSWORD_REGEX } from 'constants/utility';
+import { Controller, useForm } from 'react-hook-form';
+
+interface IFormInput {
+  [x: string]: string;
+  user: string;
+  password: string;
+}
+
+const schema = Yup.object().shape({
+  user: Yup.string().required(ERROR_MESSAGES.REQUIRED_FIELD),
+  password: Yup.string()
+    .required(ERROR_MESSAGES.REQUIRED_FIELD)
+    .test(`password`, ERROR_MESSAGES.PASSWORD_INVALID, (pw) => {
+      if (pw) {
+        return String(pw).length >= 8 && String(pw).length <= 15 && !!pw?.match(PASSWORD_REGEX);
+      }
+      return true;
+    }),
+});
 
 export function Login() {
   const { login } = useAuth();
   const history = useHistory();
-  const [user, setUser] = useState<string>(``);
-  const [password, setPassword] = useState<string>(``);
+  const { control, handleSubmit, errors, reset } = useForm<IFormInput>({
+    resolver: yupResolver(schema),
+  });
 
-  const onLogin = useCallback(async () => {
-    try {
-      await login(user, password);
-    } catch (error) {
-      console.error(error);
-    }
-  }, [login, user, password]);
+  const onLogin = useCallback(
+    async (data: IFormInput) => {
+      try {
+        const { user, password } = data;
+        await login(user, password);
+        reset();
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    [login]
+  );
 
   const handleSingUp = async () => {
     try {
@@ -30,9 +58,41 @@ export function Login() {
 
   return (
     <Fragment>
-      <DefaultInput placeholder="User" type="text" value={user} onChange={setUser} />
-      <DefaultInput placeholder="Password" type="password" value={password} onChange={setPassword} />
-      <DefaultButton muiColor={MUIColorEnums.primary} label="Login" onClick={onLogin} />
+      <Controller
+        name="user"
+        data-testid="userInput"
+        rules={{ required: true }}
+        control={control}
+        defaultValue=""
+        render={({ onChange, value }) => (
+          <DefaultInput
+            placeholder="User"
+            type="email"
+            hasError={!!errors.user}
+            errorText={errors.user?.message}
+            onChange={onChange}
+            value={value}
+          />
+        )}
+      />
+      <Controller
+        name="password"
+        data-testid="passwordInput"
+        rules={{ required: true }}
+        control={control}
+        defaultValue=""
+        render={({ onChange, value }) => (
+          <DefaultInput
+            placeholder="Password"
+            type="password"
+            hasError={!!errors.password}
+            errorText={errors.password?.message}
+            onChange={onChange}
+            value={value}
+          />
+        )}
+      />
+      <DefaultButton muiColor={MUIColorEnums.primary} label="Login" onClick={handleSubmit(onLogin)} />
       <DefaultButton
         variant={MUIButtonVariantEnums.text}
         muiColor={MUIColorEnums.primary}
