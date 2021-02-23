@@ -1,12 +1,32 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
 import 'jest-localstorage-mock';
 import App from '../App';
+
+let container: Element | null;
+
+beforeEach(() => {
+  container = document.createElement('div');
+  document.body.appendChild(container);
+});
+
+afterEach(() => {
+  if (container !== null) {
+    document.body.removeChild(container);
+    container = null;
+  }
+});
+
+jest.mock('../services/api');
 
 describe('App', () => {
   describe('Login', () => {
     it('renders login', () => {
-      const { container } = render(<App />);
+      act(() => {
+        ReactDOM.render(<App />, container);
+      });
       expect(container).toMatchSnapshot();
     });
 

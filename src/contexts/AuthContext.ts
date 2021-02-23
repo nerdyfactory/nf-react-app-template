@@ -1,6 +1,7 @@
-import { USER_TOKEN } from 'constants/utility';
 import React, { Dispatch } from 'react';
 import { clearState, persistState } from 'services/utils/persist-state';
+
+const USER_TOKEN = `nf_`;
 
 export enum AuthActionTypes {
   SET_TOKEN = 'AUTH/SET_TOKEN',
