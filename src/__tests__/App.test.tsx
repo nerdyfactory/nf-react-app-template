@@ -31,6 +31,36 @@ describe('App Authentication', () => {
     });
   });
 
+  describe('Sign Up', () => {
+    it('renders Sign Up', async () => {
+      const { container, getByText } = render(<App />);
+      fireEvent.click(getByText('Create account'));
+      waitFor(() => getByText('Create account'));
+      expect(container).toMatchSnapshot();
+    });
+    it('moves to login after sign up', async () => {
+      const { getByPlaceholderText } = render(<App />);
+      fireEvent.input(getByPlaceholderText('User'), {
+        target: {
+          value: 'test',
+        },
+      });
+      fireEvent.input(getByPlaceholderText('Password'), {
+        target: {
+          value: 'test12345',
+        },
+      });
+      fireEvent.input(getByPlaceholderText('Confirm Password'), {
+        target: {
+          value: 'test12345',
+        },
+      });
+      fireEvent.click(screen.getByText('Sign Up'));
+      waitFor(() => screen.getByText('Sign Up'));
+      expect(screen.getAllByRole('button')[0]).toHaveTextContent('Login');
+    });
+  });
+
   describe('Logout', () => {
     const loginAfterRender = async () => {
       const res = render(<App />);
