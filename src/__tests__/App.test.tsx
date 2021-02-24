@@ -5,7 +5,7 @@ import App from '../App';
 
 jest.mock('../services/api');
 
-describe('App', () => {
+describe('App Authentication', () => {
   describe('Login', () => {
     it('renders login', () => {
       const { container } = render(<App />);
@@ -44,8 +44,8 @@ describe('App', () => {
           value: 'test1234',
         },
       });
-      fireEvent.click(screen.getByText('Login'));
-      await waitFor(() => screen.getByText('Login'));
+      fireEvent.click(res.getByText('Login'));
+      await waitFor(() => res.getByText('Login'));
       return res;
     };
 

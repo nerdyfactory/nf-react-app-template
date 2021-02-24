@@ -9,6 +9,8 @@ import { AppContext, appReducer, INITIAL_APP_STATE } from 'contexts/AppContext';
 import { AuthActionTypes, AuthContext, authReducer, INITIAL_AUTH_STATE } from 'contexts';
 import { Loading } from 'components';
 import './App.css';
+import { USER_TOKEN } from 'constants/utility';
+import { getIntialState } from 'services/utils/persist-state';
 
 function App() {
   const [authCtx, authDispatcher] = useReducer(authReducer, INITIAL_AUTH_STATE);
@@ -17,12 +19,12 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = getIntialState(USER_TOKEN);
     if (token) {
       authDispatcher({ type: AuthActionTypes.SET_TOKEN, payload: token });
     }
     setIsLoaded(true);
-  }, []);
+  }, [isLoaded]);
 
   if (!isLoaded) return <Loading />;
 

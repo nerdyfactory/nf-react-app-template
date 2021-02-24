@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App Login renders login 1`] = `
+exports[`App Authentication Login renders login 1`] = `
 <div>
   <div
     class="sc-dlfnbm iuHaXN"
@@ -74,7 +74,7 @@ exports[`App Login renders login 1`] = `
 </div>
 `;
 
-exports[`App Logout renders logout 1`] = `
+exports[`App Authentication Logout renders logout 1`] = `
 <div>
   <button
     class="MuiButtonBase-root MuiButton-root MuiButton-contained sc-bdfBwQ lfqaYk MuiButton-containedPrimary"
