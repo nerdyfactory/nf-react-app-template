@@ -25,7 +25,7 @@ const schema = Yup.object().shape({
       }
       return true;
     }),
-  passwordConfirm: Yup.string()
+  passwordConfirmation: Yup.string()
     .oneOf([Yup.ref(`password`), null], ERROR_MESSAGES.PASSWORD_NOT_MATCHING)
     .required(ERROR_MESSAGES.REQUIRED_FIELD),
 });

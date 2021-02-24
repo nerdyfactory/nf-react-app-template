@@ -1,38 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
 import 'jest-localstorage-mock';
 import App from '../App';
-
-let container: Element | null;
-
-beforeEach(() => {
-  container = document.createElement('div');
-  document.body.appendChild(container);
-});
-
-afterEach(() => {
-  if (container !== null) {
-    document.body.removeChild(container);
-    container = null;
-  }
-});
 
 jest.mock('../services/api');
 
 describe('App', () => {
   describe('Login', () => {
     it('renders login', () => {
-      act(() => {
-        ReactDOM.render(<App />, container);
-      });
+      const { container } = render(<App />);
       expect(container).toMatchSnapshot();
     });
 
     it('moves to logout when login', async () => {
       const { getByPlaceholderText } = render(<App />);
-
       fireEvent.input(getByPlaceholderText('User'), {
         target: {
           value: 'test',
@@ -53,14 +34,12 @@ describe('App', () => {
   describe('Logout', () => {
     const loginAfterRender = async () => {
       const res = render(<App />);
-      const { getByPlaceholderText } = res;
-
-      fireEvent.input(getByPlaceholderText('User'), {
+      fireEvent.input(res.getByPlaceholderText('User'), {
         target: {
           value: 'test',
         },
       });
-      fireEvent.input(getByPlaceholderText('Password'), {
+      fireEvent.input(res.getByPlaceholderText('Password'), {
         target: {
           value: 'test1234',
         },
@@ -76,9 +55,9 @@ describe('App', () => {
     });
 
     it('moves to login screen', async () => {
-      const { getAllByRole, getByText } = await loginAfterRender();
-      fireEvent.click(getByText('Logout'));
-      expect(getAllByRole('button')[0]).toHaveTextContent('Login');
+      await loginAfterRender();
+      fireEvent.click(screen.getByText('Logout'));
+      expect(screen.getAllByRole('button')[0]).toHaveTextContent('Login');
       expect(localStorage.setItem).toHaveBeenCalledTimes(1);
       expect(localStorage.removeItem).toHaveBeenCalledTimes(1);
     });
