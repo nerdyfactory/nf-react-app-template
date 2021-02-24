@@ -1,6 +1,6 @@
 import { AuthActionTypes, AuthContext } from 'contexts';
 import { useContext } from 'react';
-import { JWT_FAKE_TOKEN } from '__mocks__/request';
+import { singIn } from 'services/api';
 
 const useAuth = () => {
   const { dispatch } = useContext(AuthContext);
@@ -10,14 +10,16 @@ const useAuth = () => {
     console.log(username, password, passwordConfirmation);
   };
 
-  const login = async (username: string, password: string) => {
-    // DEVELOPER'S IMPLEMENTATION
-    console.log(username, password);
-    dispatch({ type: AuthActionTypes.SET_TOKEN, payload: `${JWT_FAKE_TOKEN}` });
+  const login = async (email: string, password: string) => {
+    try {
+      const token = await singIn(email, password);
+      dispatch({ type: AuthActionTypes.SET_TOKEN, payload: `${token}` });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const logout = async () => {
-    // DEVELOPER'S IMPLEMENTATION
     dispatch({ type: AuthActionTypes.REMOVE_TOKEN });
   };
 
