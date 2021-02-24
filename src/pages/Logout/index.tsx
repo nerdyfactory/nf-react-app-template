@@ -1,13 +1,12 @@
-import React, { useContext } from 'react';
-import { AuthContext, AuthActionTypes } from '../../contexts';
+import React from 'react';
+import useAuth from 'hooks/useAuth';
 
 export function Logout() {
-  const { dispatch } = useContext(AuthContext);
-  const onLogout = () => dispatch({ type: AuthActionTypes.REMOVE_TOKEN });
+  const { logout } = useAuth();
 
   return (
     <div>
-      <button onClick={onLogout}>Logout</button>
+      <button onClick={logout}>Logout</button>
     </div>
   );
 }

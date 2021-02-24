@@ -6,6 +6,18 @@ exports[`App Login renders login 1`] = `
     class="App"
   >
     <div>
+      <input
+        name="username"
+        placeholder="username"
+        type="text"
+        value=""
+      />
+      <input
+        name="password"
+        placeholder="password"
+        type="text"
+        value=""
+      />
       <button>
         Login
       </button>
