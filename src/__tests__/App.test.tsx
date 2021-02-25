@@ -13,13 +13,13 @@ describe('App Authentication', () => {
     });
 
     it('moves to logout when login', async () => {
-      const { getByPlaceholderText } = render(<App />);
-      fireEvent.input(getByPlaceholderText('User'), {
+      render(<App />);
+      fireEvent.input(screen.getByPlaceholderText('User'), {
         target: {
           value: 'test',
         },
       });
-      fireEvent.input(getByPlaceholderText('Password'), {
+      fireEvent.input(screen.getByPlaceholderText('Password'), {
         target: {
           value: 'test1234',
         },
@@ -33,30 +33,29 @@ describe('App Authentication', () => {
 
   describe('Sign Up', () => {
     it('renders Sign Up', async () => {
-      const { container, getByText } = render(<App />);
-      fireEvent.click(getByText('Create account'));
-      waitFor(() => getByText('Create account'));
-      expect(container).toMatchSnapshot();
+      const res = render(<App />);
+      fireEvent.click(screen.getByText('Create account'));
+      expect(res.container).toMatchSnapshot();
     });
     it('moves to login after sign up', async () => {
-      const { getByPlaceholderText } = render(<App />);
-      fireEvent.input(getByPlaceholderText('User'), {
+      render(<App />);
+      fireEvent.input(screen.getByPlaceholderText('User'), {
         target: {
           value: 'test',
         },
       });
-      fireEvent.input(getByPlaceholderText('Password'), {
+      fireEvent.input(screen.getByPlaceholderText('Password'), {
         target: {
           value: 'test12345',
         },
       });
-      fireEvent.input(getByPlaceholderText('Confirm Password'), {
+      fireEvent.input(screen.getByPlaceholderText('Confirm Password'), {
         target: {
           value: 'test12345',
         },
       });
       fireEvent.click(screen.getByText('Sign Up'));
-      waitFor(() => screen.getByText('Sign Up'));
+      await waitFor(() => screen.getByText('Sign Up'));
       expect(screen.getAllByRole('button')[0]).toHaveTextContent('Login');
     });
   });
@@ -64,18 +63,18 @@ describe('App Authentication', () => {
   describe('Logout', () => {
     const loginAfterRender = async () => {
       const res = render(<App />);
-      fireEvent.input(res.getByPlaceholderText('User'), {
+      fireEvent.input(screen.getByPlaceholderText('User'), {
         target: {
           value: 'test',
         },
       });
-      fireEvent.input(res.getByPlaceholderText('Password'), {
+      fireEvent.input(screen.getByPlaceholderText('Password'), {
         target: {
           value: 'test1234',
         },
       });
-      fireEvent.click(res.getByText('Login'));
-      await waitFor(() => res.getByText('Login'));
+      fireEvent.click(screen.getByText('Login'));
+      await waitFor(() => screen.getByText('Login'));
       return res;
     };
 

@@ -24,7 +24,7 @@ function App() {
       authDispatcher({ type: AuthActionTypes.SET_TOKEN, payload: token });
     }
     setIsLoaded(true);
-  }, [isLoaded]);
+  }, []);
 
   if (!isLoaded) return <Loading />;
 
