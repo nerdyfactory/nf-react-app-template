@@ -1,19 +1,18 @@
-import React, { Fragment, useCallback } from 'react';
-import useAuth from 'hooks/useAuth';
+import React, { Fragment } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 
+import useAuth from 'hooks/useAuth';
 import { DefaultButton } from 'components/DefaultButton';
 import { DefaultInput } from 'components/DefaultInput';
-import { MUIButtonVariantEnums, MUIColorEnums } from 'constants/enums';
 import { ERROR_MESSAGES, PASSWORD_REGEX } from 'constants/utility';
-import { Controller, useForm } from 'react-hook-form';
-
+import { MUIButtonVariantEnums, MUIColorEnums } from 'constants/enums';
 interface IFormInput {
-  [x: string]: string;
   user: string;
   password: string;
+  passwordConfirmation: string;
 }
 
 const schema = Yup.object().shape({
@@ -26,31 +25,31 @@ const schema = Yup.object().shape({
       }
       return true;
     }),
+  passwordConfirmation: Yup.string()
+    .oneOf([Yup.ref(`password`), null], ERROR_MESSAGES.PASSWORD_NOT_MATCHING)
+    .required(ERROR_MESSAGES.REQUIRED_FIELD),
 });
 
-export function Login() {
-  const { login } = useAuth();
-  const history = useHistory();
-  const { control, handleSubmit, errors, reset } = useForm<IFormInput>({
+export function SignUp() {
+  const { signUp } = useAuth();
+  const { control, handleSubmit, errors } = useForm<IFormInput>({
     resolver: yupResolver(schema),
   });
+  const history = useHistory();
 
-  const onLogin = useCallback(
-    async (data: IFormInput) => {
-      try {
-        const { user, password } = data;
-        await login(user, password);
-        reset();
-      } catch (error) {
-        console.error(error);
-      }
-    },
-    [login]
-  );
-
-  const handleSingUp = async () => {
+  const onSignUp = async (data: IFormInput) => {
     try {
-      history.push('/sign-up');
+      const { user, password, passwordConfirmation } = data;
+      await signUp(user, password, passwordConfirmation);
+      history.push('/login');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleLogin = async () => {
+    try {
+      history.push('/login');
     } catch (error) {
       console.error(error);
     }
@@ -65,9 +64,8 @@ export function Login() {
         defaultValue=""
         render={({ onChange, value }) => (
           <DefaultInput
-            name="user"
-            type="email"
             placeholder="User"
+            type="text"
             hasError={!!errors.user}
             errorText={errors.user?.message}
             onChange={onChange}
@@ -82,9 +80,8 @@ export function Login() {
         defaultValue=""
         render={({ onChange, value }) => (
           <DefaultInput
-            name="password"
-            type="password"
             placeholder="Password"
+            type="password"
             hasError={!!errors.password}
             errorText={errors.password?.message}
             onChange={onChange}
@@ -92,12 +89,28 @@ export function Login() {
           />
         )}
       />
-      <DefaultButton muiColor={MUIColorEnums.primary} label="Login" onClick={handleSubmit(onLogin)} />
+      <Controller
+        name="passwordConfirmation"
+        rules={{ required: true }}
+        control={control}
+        defaultValue=""
+        render={({ onChange, value }) => (
+          <DefaultInput
+            placeholder="Confirm Password"
+            type="password"
+            hasError={!!errors.passwordConfirmation}
+            errorText={errors.passwordConfirmation?.message}
+            onChange={onChange}
+            value={value}
+          />
+        )}
+      />
+      <DefaultButton muiColor={MUIColorEnums.primary} label="Sign Up" onClick={handleSubmit(onSignUp)} />
       <DefaultButton
         variant={MUIButtonVariantEnums.text}
         muiColor={MUIColorEnums.primary}
-        label="Create account"
-        onClick={handleSingUp}
+        label="Login"
+        onClick={handleLogin}
       />
     </Fragment>
   );

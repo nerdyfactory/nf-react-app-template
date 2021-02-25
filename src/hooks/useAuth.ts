@@ -1,20 +1,28 @@
 import { AuthActionTypes, AuthContext } from 'contexts';
 import { useContext } from 'react';
-import { singIn } from 'services/api';
+import { singIn, createUser } from 'services/api';
 
 const useAuth = () => {
   const { dispatch } = useContext(AuthContext);
 
+  const signUp = async (email: string, password: string, passwordConfirmation: string) => {
+    await createUser(email, password, passwordConfirmation);
+  };
+
   const login = async (email: string, password: string) => {
-    const token = await singIn(email, password);
-    dispatch({ type: AuthActionTypes.SET_TOKEN, payload: `${token}` });
+    try {
+      const data = await singIn(email, password);
+      dispatch({ type: AuthActionTypes.SET_TOKEN, payload: `${data?.token}` });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const logout = async () => {
     dispatch({ type: AuthActionTypes.REMOVE_TOKEN });
   };
 
-  return { login, logout };
+  return { login, logout, signUp };
 };
 
 export default useAuth;

@@ -9,6 +9,10 @@ type Error = {
   message: string;
 };
 
+type Response = {
+  token: string;
+};
+
 export const JWT_FAKE_TOKEN = `somerandomtoken`;
 
 export const users: User[] = [
@@ -30,12 +34,24 @@ export function requestUser(url: string) {
   });
 }
 
-export function singIn(email: string, password: string) {
-  return new Promise((resolve: (token: string) => void, reject: (reason?: Error) => void): void => {
+export function singIn(email: string, password: string): Promise<Response> {
+  return new Promise<Response>((resolve: (data: Response) => void, reject: (reason?: Error) => void): void => {
     const user = users.find((u) => u.email == email && u.password == password);
     process.nextTick(() =>
       user
-        ? resolve(JWT_FAKE_TOKEN)
+        ? resolve({ token: JWT_FAKE_TOKEN })
+        : reject({
+            message: 'User not found. Check your credentials or sing up.',
+          })
+    );
+  });
+}
+
+export function createUser(email: string, password: string, passwordConfirmation: string) {
+  return new Promise((resolve: (token: string) => void, reject: (reason?: Error) => void): void => {
+    process.nextTick(() =>
+      !!email && !!password && !!passwordConfirmation && password === passwordConfirmation
+        ? resolve(`user created`)
         : reject({
             message: 'User not found. Check your credentials or sing up.',
           })

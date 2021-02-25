@@ -1,43 +1,31 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
 import 'jest-localstorage-mock';
 import App from '../App';
 
-let container: Element | null;
-
-beforeEach(() => {
-  container = document.createElement('div');
-  document.body.appendChild(container);
-});
-
-afterEach(() => {
-  if (container !== null) {
-    document.body.removeChild(container);
-    container = null;
-  }
-});
-
 jest.mock('../services/api');
 
-describe('App', () => {
+describe('App Authentication', () => {
   describe('Login', () => {
     it('renders login', () => {
-      act(() => {
-        ReactDOM.render(<App />, container);
-      });
+      const { container } = render(<App />);
       expect(container).toMatchSnapshot();
     });
 
     it('moves to logout when login', async () => {
       const { getByPlaceholderText } = render(<App />);
-      const userInput = getByPlaceholderText(`username`);
-      const pwInput = getByPlaceholderText(`password`);
-      userInput.setAttribute(`value`, 'mark@example.com');
-      pwInput.setAttribute(`value`, 'Mark1234567');
+      fireEvent.input(getByPlaceholderText('User'), {
+        target: {
+          value: 'test',
+        },
+      });
+      fireEvent.input(getByPlaceholderText('Password'), {
+        target: {
+          value: 'test1234',
+        },
+      });
       fireEvent.click(screen.getByText('Login'));
-      await waitFor(() => screen.getByRole('button'));
+      await waitFor(() => screen.getByText('Login'));
       expect(screen.getByRole('button')).toHaveTextContent('Logout');
       expect(localStorage.setItem).toHaveBeenCalledTimes(1);
     });
@@ -46,11 +34,18 @@ describe('App', () => {
   describe('Logout', () => {
     const loginAfterRender = async () => {
       const res = render(<App />);
-      const userInput = res.getByPlaceholderText(`username`);
-      const pwInput = res.getByPlaceholderText(`password`);
-      userInput.setAttribute(`value`, 'mark@example.com');
-      pwInput.setAttribute(`value`, 'Mark1234567');
-      fireEvent.click(screen.getByText('Login'));
+      fireEvent.input(res.getByPlaceholderText('User'), {
+        target: {
+          value: 'test',
+        },
+      });
+      fireEvent.input(res.getByPlaceholderText('Password'), {
+        target: {
+          value: 'test1234',
+        },
+      });
+      fireEvent.click(res.getByText('Login'));
+      await waitFor(() => res.getByText('Login'));
       return res;
     };
 
@@ -62,8 +57,7 @@ describe('App', () => {
     it('moves to login screen', async () => {
       await loginAfterRender();
       fireEvent.click(screen.getByText('Logout'));
-      await waitFor(() => screen.getByRole('button'));
-      expect(screen.getByRole('button')).toHaveTextContent('Login');
+      expect(screen.getAllByRole('button')[0]).toHaveTextContent('Login');
       expect(localStorage.setItem).toHaveBeenCalledTimes(1);
       expect(localStorage.removeItem).toHaveBeenCalledTimes(1);
     });
