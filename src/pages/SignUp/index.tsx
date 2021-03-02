@@ -16,7 +16,7 @@ interface IFormInput {
 }
 
 const schema = Yup.object().shape({
-  user: Yup.string().required(ERROR_MESSAGES.REQUIRED_FIELD),
+  user: Yup.string().email(ERROR_MESSAGES.INVALID_EMAIL).required(ERROR_MESSAGES.REQUIRED_FIELD),
   password: Yup.string()
     .required(ERROR_MESSAGES.REQUIRED_FIELD)
     .test(`password`, ERROR_MESSAGES.PASSWORD_INVALID, (pw) => {
