@@ -18,7 +18,7 @@ describe('Sign Up', () => {
 
   it('catches empty fields', async () => {
     render(<App />);
-    fireEvent.input(screen.getByPlaceholderText('User'), {
+    fireEvent.input(screen.getByPlaceholderText('Email'), {
       target: {
         value: ``,
       },
@@ -40,7 +40,7 @@ describe('Sign Up', () => {
 
   it('catches invalid email', async () => {
     render(<App />);
-    fireEvent.input(screen.getByPlaceholderText('User'), {
+    fireEvent.input(screen.getByPlaceholderText('Email'), {
       target: {
         value: `wrong_username`,
       },
@@ -63,7 +63,7 @@ describe('Sign Up', () => {
 
   it('catches invalid password', async () => {
     render(<App />);
-    fireEvent.input(screen.getByPlaceholderText('User'), {
+    fireEvent.input(screen.getByPlaceholderText('Email'), {
       target: {
         value: VALID_EMAIL,
       },
@@ -86,7 +86,7 @@ describe('Sign Up', () => {
 
   it('catches passwords not matching', async () => {
     render(<App />);
-    fireEvent.input(screen.getByPlaceholderText('User'), {
+    fireEvent.input(screen.getByPlaceholderText('Email'), {
       target: {
         value: VALID_EMAIL,
       },
@@ -109,7 +109,7 @@ describe('Sign Up', () => {
 
   it('moves to login after sign up', async () => {
     render(<App />);
-    fireEvent.input(screen.getByPlaceholderText('User'), {
+    fireEvent.input(screen.getByPlaceholderText('Email'), {
       target: {
         value: VALID_EMAIL,
       },

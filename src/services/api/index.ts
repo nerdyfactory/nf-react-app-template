@@ -13,10 +13,10 @@ export function singIn(email: string, password: string): Promise<Response> {
   });
 }
 
-export function createUser(email: string, password: string, passwordConfirmation: string) {
+export function createUser(role: string, email: string, password: string, passwordConfirmation: string) {
   return new Promise<void>((resolve) => {
     http.get(
-      { path: `/sign-in?user=${email}&password=${password}&passwordConfirmation=${passwordConfirmation}` },
+      { path: `/sign-in?role=${role}&user=${email}&password=${password}&passwordConfirmation=${passwordConfirmation}` },
       (response) => {
         response.on('data', () => {});
         response.on('end', () => resolve());

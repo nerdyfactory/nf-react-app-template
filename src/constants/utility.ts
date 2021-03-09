@@ -17,3 +17,8 @@ export const ERROR_MESSAGES = {
 
 export const PASSWORD_REGEX = /^(?=.*[a-zA-Z])(?=.*[0-9])/;
 export const PHONE_REGEX = /^\d{3}-\d{3,4}-\d{4}$/;
+
+export const USER_ROLES = {
+  MANAGER: 'Manager',
+  ADMIN: 'Admin',
+};

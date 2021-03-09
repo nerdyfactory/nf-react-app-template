@@ -5,7 +5,7 @@ import jsonServerProvider from 'ra-data-json-server';
 
 const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 
-function Admin(props) {
+function Admin() {
   return (
     <AdminContainer dataProvider={dataProvider}>
       <Resource name="users" list={ListGuesser} />
