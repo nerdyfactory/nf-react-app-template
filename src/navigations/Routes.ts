@@ -1,7 +1,10 @@
-import { Login, Logout, SignUp } from '../pages';
+import { Login, Home, SignUp, Admin } from '../pages';
 
 const ROUTES = {
-  PRIVATE: [{ PATH: `/logout`, NAME: `logout`, component: Logout }],
+  PRIVATE: [
+    { PATH: `/home`, NAME: `home`, component: Home },
+    { PATH: `/admin`, NAME: `admin`, component: Admin },
+  ],
   PUBLIC: [
     { PATH: `/login`, NAME: `login`, component: Login },
     { PATH: `/sign-up`, NAME: `signUp`, component: SignUp },

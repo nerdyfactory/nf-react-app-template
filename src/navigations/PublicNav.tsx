@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import styled from 'styled-components';
+import { AppContainer } from 'components';
 import ROUTES from './Routes';
 
 export function PublicNav() {
   return (
-    <App>
+    <AppContainer>
       <Router>
         <Switch>
           {ROUTES.PUBLIC.map((r) => (
@@ -14,14 +14,6 @@ export function PublicNav() {
           <Redirect to={ROUTES?.PUBLIC[0]?.PATH || '/'} />
         </Switch>
       </Router>
-    </App>
+    </AppContainer>
   );
 }
-
-const App = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  max-width: 600px;
-  margin: 100px auto;
-`;
