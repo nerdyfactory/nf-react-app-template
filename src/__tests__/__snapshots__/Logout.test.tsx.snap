@@ -2,20 +2,38 @@
 
 exports[`Logout renders logout 1`] = `
 <div>
-  <button
-    class="MuiButtonBase-root MuiButton-root MuiButton-contained sc-bdfBwQ lfqaYk MuiButton-containedPrimary"
-    tabindex="0"
-    type="button"
+  <div
+    class="sc-dlfnbm iuHaXN"
   >
-    <span
-      class="MuiButton-label"
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained sc-bdfBwQ lfqaYk MuiButton-containedPrimary"
+      tabindex="0"
+      type="button"
     >
-      Logout
-    </span>
-    <span
-      class="MuiTouchRipple-root"
-    />
-  </button>
+      <span
+        class="MuiButton-label"
+      >
+        Admin console
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained sc-bdfBwQ lfqaYk MuiButton-containedSecondary"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Logout
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </div>
   <div
     style="position: fixed; z-index: 9999;"
   />

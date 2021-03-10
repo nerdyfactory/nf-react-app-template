@@ -34,7 +34,7 @@ describe('Logout', () => {
   it('moves to login screen', async () => {
     await loginAfterRender();
     fireEvent.click(screen.getByText('Logout'));
-    expect(screen.getAllByRole('button')[0]).toHaveTextContent('Login');
+    expect(screen.getByText('Login')).toBeInTheDocument();
     expect(localStorage.setItem).toHaveBeenCalledTimes(1);
     expect(localStorage.removeItem).toHaveBeenCalledTimes(1);
   });
