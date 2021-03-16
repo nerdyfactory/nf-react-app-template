@@ -1,19 +1,15 @@
 import React, { Fragment } from 'react';
 import jsonServerProvider from 'ra-data-json-server';
-import useBootstrap from 'hooks/useBootstrap';
-import { Admin as AdminContainer, Resource, ListGuesser } from 'react-admin';
-// import AdminHeader from './AdminHeader';
+import { Admin as AdminContainer, Resource, ListGuesser, Layout, LayoutComponent } from 'react-admin';
+import AdminAppBar from './AdminAppBar';
+
+const MyLayout: LayoutComponent = (props) => <Layout {...props} appBar={AdminAppBar} />;
 
 const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 export function Admin() {
-  const [theme] = useBootstrap();
   return (
     <Fragment>
-      <AdminContainer
-        dataProvider={dataProvider}
-        title="Example Admin"
-        theme={theme} // Add your theme to react-admin
-      >
+      <AdminContainer layout={MyLayout} dataProvider={dataProvider}>
         <Resource name="users" list={ListGuesser} />
       </AdminContainer>
     </Fragment>
