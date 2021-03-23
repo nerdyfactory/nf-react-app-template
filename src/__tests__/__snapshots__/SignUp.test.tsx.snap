@@ -6,6 +6,36 @@ exports[`Sign Up renders Sign Up 1`] = `
     class="sc-dlfnbm iuHaXN"
   >
     <div
+      class="MuiInputBase-root MuiInput-root MuiInput-underline"
+    >
+      <select
+        class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+        id="age-native-simple"
+        name="age"
+      >
+        <option
+          value="Manager"
+        >
+          Manager
+        </option>
+        <option
+          value="Admin"
+        >
+          Admin
+        </option>
+      </select>
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSelect-icon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+      </svg>
+    </div>
+    <div
       class="MuiFormControl-root MuiTextField-root sc-gsTCUz eHbxyQ"
     >
       <div
@@ -15,7 +45,7 @@ exports[`Sign Up renders Sign Up 1`] = `
           aria-invalid="false"
           class="MuiInputBase-input MuiInput-input"
           id="standard-basic"
-          placeholder="User"
+          placeholder="Email"
           type="text"
           value=""
         />

@@ -5,8 +5,8 @@ import { singIn, createUser } from 'services/api';
 const useAuth = () => {
   const { dispatch } = useContext(AuthContext);
 
-  const signUp = async (email: string, password: string, passwordConfirmation: string) => {
-    await createUser(email, password, passwordConfirmation);
+  const signUp = async (role: string, email: string, password: string, passwordConfirmation: string) => {
+    await createUser(role, email, password, passwordConfirmation);
   };
 
   const login = async (email: string, password: string) => {

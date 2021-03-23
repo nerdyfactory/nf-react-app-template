@@ -1,0 +1,218 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Admin Page renders admin 1`] = `
+<div>
+  <div>
+    <div
+      class="layout RaLayout-root-1"
+    >
+      <button
+        aria-label="Skip to content"
+        class="MuiButtonBase-root-39 MuiButton-root-12 MuiButton-contained-20 RaButton-button-6 RaSkipToContentButton-skipToContentButton-5 skip-nav-button MuiButton-containedPrimary-21 MuiButton-containedSizeSmall-29 MuiButton-sizeSmall-31"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label-13"
+        >
+          <span
+            class="RaButton-label-7"
+          >
+            Skip to content
+          </span>
+        </span>
+      </button>
+      <div
+        class="RaLayout-appFrame-2"
+      >
+        <header
+          class="MuiPaper-root-51 MuiAppBar-root-40 MuiAppBar-positionFixed-41 MuiAppBar-colorPrimary-47 sc-hKgILt ibAExj mui-fixed MuiPaper-elevation4-58"
+        >
+          <span>
+            Admin Console
+          </span>
+          <button
+            class="MuiButtonBase-root-39 MuiButton-root-12 MuiButton-text-14 sc-bdfBwQ lfqaYk MuiButton-colorInherit-24"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label-13"
+            >
+              Go Back
+            </span>
+          </button>
+        </header>
+        <main
+          class="RaLayout-contentWithSidebar-3"
+        >
+          <div
+            class="MuiDrawer-root-93 RaSidebar-root-79 MuiDrawer-docked-94 RaSidebar-docked-80"
+          >
+            <div
+              class="MuiPaper-root-51 MuiDrawer-paper-95 RaSidebar-paper-81 MuiDrawer-paperAnchorLeft-96 RaSidebar-paperAnchorLeft-82 RaSidebar-drawerPaper-91 RaSidebar-drawerPaper-92 MuiDrawer-paperAnchorDockedLeft-100 RaSidebar-paperAnchorDockedLeft-86 MuiPaper-elevation0-54"
+            >
+              <div
+                class="RaMenu-main-105 RaMenu-closed-107"
+              >
+                <a
+                  aria-current="page"
+                  aria-disabled="false"
+                  class="MuiButtonBase-root-39 MuiListItem-root-135 MuiMenuItem-root-132 RaMenuItemLink-root-118 MuiMenuItem-gutters-133 MuiListItem-gutters-140 MuiListItem-button-141 RaMenuItemLink-active-119"
+                  href="#/users"
+                  role="menuitem"
+                  tabindex="0"
+                  title="Users"
+                >
+                  <div
+                    class="MuiListItemIcon-root-143 RaMenuItemLink-icon-120"
+                  >
+                    <svg
+                      class="MuiSvgIcon-root-145"
+                      focusable="false"
+                      role="img"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M4 14h4v-4H4v4zm0 5h4v-4H4v4zM4 9h4V5H4v4zm5 5h12v-4H9v4zm0 5h12v-4H9v4zM9 5v4h12V5H9z"
+                      />
+                      <title>
+                        Users
+                      </title>
+                    </svg>
+                  </div>
+                  Users
+                </a>
+              </div>
+            </div>
+          </div>
+          <div
+            class="RaLayout-content-4"
+            id="main-content"
+          >
+            <div
+              class="list-page RaList-root-154"
+            >
+              <div
+                class="MuiToolbar-root-162 MuiToolbar-regular-164 RaListToolbar-toolbar-160 MuiToolbar-gutters-163"
+              >
+                <span />
+                <div
+                  class="MuiToolbar-root-162 MuiToolbar-regular-164 RaTopToolbar-root-166 RaListToolbar-actions-161 MuiToolbar-gutters-163"
+                >
+                  <button
+                    aria-label="Export"
+                    class="MuiButtonBase-root-39 MuiButton-root-12 MuiButton-text-14 RaButton-button-6 MuiButton-textPrimary-15 MuiButton-textSizeSmall-25 MuiButton-sizeSmall-31"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <span
+                      class="MuiButton-label-13"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root-145 RaButton-smallIcon-9"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"
+                        />
+                      </svg>
+                      <span
+                        class="RaButton-label-7"
+                      >
+                        Export
+                      </span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="RaList-main-155"
+              >
+                <div
+                  class="MuiPaper-root-51 MuiCard-root-167 RaList-content-156 MuiPaper-elevation1-55 MuiPaper-rounded-52"
+                >
+                  <div
+                    class="MuiToolbar-root-162 MuiToolbar-regular-164 RaBulkActionsToolbar-toolbar-168 RaBulkActionsToolbar-collapsed-171 MuiToolbar-gutters-163"
+                    data-test="bulk-actions-toolbar"
+                  >
+                    <div
+                      class="RaBulkActionsToolbar-title-172"
+                    >
+                      <button
+                        aria-label="Unselect"
+                        class="MuiButtonBase-root-39 MuiIconButton-root-174 RaBulkActionsToolbar-icon-173 MuiIconButton-sizeSmall-180"
+                        tabindex="0"
+                        title="Unselect"
+                        type="button"
+                      >
+                        <span
+                          class="MuiIconButton-label-181"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="MuiSvgIcon-root-145 MuiSvgIcon-fontSizeSmall-152"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                      <h6
+                        class="MuiTypography-root-182 MuiTypography-subtitle1-193 MuiTypography-colorInherit-204"
+                      >
+                        0 items selected
+                      </h6>
+                    </div>
+                    <div
+                      class="MuiToolbar-root-162 MuiToolbar-regular-164 RaTopToolbar-root-166 RaBulkActionsToolbar-topToolbar-169 MuiToolbar-gutters-163"
+                    >
+                      <button
+                        aria-label="Delete"
+                        class="MuiButtonBase-root-39 MuiButton-root-12 MuiButton-text-14 RaButton-button-6 RaBulkDeleteWithUndoButton-deleteButton-212 MuiButton-textPrimary-15 MuiButton-textSizeSmall-25 MuiButton-sizeSmall-31"
+                        tabindex="0"
+                        type="button"
+                      >
+                        <span
+                          class="MuiButton-label-13"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            class="MuiSvgIcon-root-145 RaButton-smallIcon-9"
+                            focusable="false"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                            />
+                          </svg>
+                          <span
+                            class="RaButton-label-7"
+                          >
+                            Delete
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    class="MuiToolbar-root-162 MuiToolbar-dense-165 MuiToolbar-gutters-163"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+  <div
+    style="position: fixed; z-index: 9999;"
+  />
+</div>
+`;

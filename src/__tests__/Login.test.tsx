@@ -86,7 +86,7 @@ describe('Login', () => {
     });
     fireEvent.click(screen.getByText('Login'));
     await waitFor(() => screen.getByText('Login'));
-    expect(screen.getByRole('button')).toHaveTextContent('Logout');
+    expect(screen.getByText('Logout')).toBeInTheDocument();
     expect(localStorage.setItem).toHaveBeenCalledTimes(1);
   });
 });
